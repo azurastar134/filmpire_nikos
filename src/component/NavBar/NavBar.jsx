@@ -24,7 +24,7 @@ const NavBar = () => {
                     color="inherit"
                     edge="start"
                     style={{outline: 'none'}}
-                    onClick={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
+                    onClick={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}  
                     className={classes.menuButton}
                     >
                         <Menu/>

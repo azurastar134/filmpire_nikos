@@ -1,3 +1,4 @@
+import { hslToRgb } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 const drawerWidth = 240;
 
@@ -13,7 +14,8 @@ export default makeStyles((theme) =>({
         }, 
     },
     appbar: {
-        backgroundColor: 'lightblue',
+        backgroundImage: "linear-gradient(blue,lightblue)",
+        color: "white",
     },
     menuButton:{
         marginRight: theme.spacing(2),
@@ -30,6 +32,11 @@ export default makeStyles((theme) =>({
     },
     drawerPaper: {
        width: drawerWidth,
+       overflow: 'hidden',
+        '&:hover' : {
+            overflowY: 'scroll',
+            
+        }
     },
     linkButton: {
         '&:hover' : {

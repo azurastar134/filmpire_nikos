@@ -64,7 +64,7 @@ const NavBar = () => {
                 {isMobile && 'Search...'}
             </Toolbar>
         </AppBar>
-        <div>
+        <div >
             <nav className={classes.drawer}>
               {isMobile ? ( 
                 <Drawer

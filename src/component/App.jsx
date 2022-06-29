@@ -3,6 +3,8 @@ import { CssBaseline } from '@mui/material';
 import {Route, Switch} from 'react-router-dom';
 import {Actors, MovieInformation, Movies, NavBar, Profile} from './'
 import useStyles from './styles';
+import { useState } from 'react';
+import TextField from './Search/Search';
 
 const App = () => {
   const classes = useStyles();

@@ -6,11 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { useGetMovieQuery } from '../../services/TMDB';
 import useStyles from './styles'
+import genreIcons from '../../assets/genres';
+import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 
 const MovieInformation = () => {
 
-  const {id} = useParams();
-  const {data, isFetching, error} = useGetMovieQuery(id);
+  const dispatch = useDispatch();
+  const {id} = useParams(); // hook that gives us access to the id of the movie!
+  const {data, isFetching, error} = useGetMovieQuery(id); // get the corresponding movie with the redux call
   const classes = useStyles();
   
   if(isFetching) {
@@ -51,8 +54,28 @@ const MovieInformation = () => {
         </Typography>
         <Grid item className={classes.containerSpaceAround}>
           <Box display="flex" align="center">
-            <Rating readOnly value={data.vote_average /2}/>
+            <Rating readOnly value={data.vote_average/2}/>
+            <Typography variant="subtitle1" gutterBottom style={{marginLeft: "10px"}}>
+              {data?.vote_average} / 10
+            </Typography>
           </Box>
+          <Typography variant="h6" align="center" gutterBottom>
+            {data?.runtime} min  {data?.spoken_languages.length > 0 ? `/ ${data?.spoken_languages[0].name}` : ''}
+          </Typography>
+        </Grid>
+        <Grid item className={classes.genresContainer}>
+          {data?.genres?.map((genre, i ) => (
+            <Link 
+              key={genre.name} 
+              className={classes.links} 
+              to="/" 
+              onClick={() => dispatch(selectGenreOrCategory(genre.id))}>
+              <img src={genreIcons[genre.name.toLowerCase()]} className={classes.gerneImage} height={30}/>
+              <Typography color="textPrimary" variant="subtitle1">
+                {genre?.name}
+              </Typography>
+            </Link>
+          ))}
         </Grid>
       </Grid>
     </Grid>

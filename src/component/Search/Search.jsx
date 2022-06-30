@@ -28,6 +28,10 @@ const Search = () => {
     {
         dispatch(searchMovie(query));
     }
+    else 
+    {
+        dispatch(searchMovie());
+    }
     }, [query]);
     
 

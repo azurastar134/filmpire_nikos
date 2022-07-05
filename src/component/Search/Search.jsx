@@ -12,11 +12,14 @@ const Search = () => {
     const [query, setQuery] = useState('');
     const [debounceQuery, setDebounceQuery] = useState(query);
     const dispatch = useDispatch();
+    const location = useLocation();
     const handleKeyPress= (event) => {
         if(event.key === 'Enter') {
             dispatch(searchMovie(query));
         }
     }
+
+   
 
     useEffect(() => {
         const timer = setTimeout(() => setQuery(debounceQuery), 1000);
@@ -34,7 +37,7 @@ const Search = () => {
     }
     }, [query]);
     
-
+    if(location.pathname !== '/') return null;
 
   return (
     <div className={classes.searchContainer}>

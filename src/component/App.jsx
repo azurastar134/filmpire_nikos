@@ -3,8 +3,6 @@ import { CssBaseline } from '@mui/material';
 import {Route, Switch} from 'react-router-dom';
 import {Actors, MovieInformation, Movies, NavBar, Profile} from './'
 import useStyles from './styles';
-import { useState } from 'react';
-import TextField from './Search/Search';
 
 const App = () => {
   const classes = useStyles();
@@ -22,7 +20,7 @@ const App = () => {
         <Route exact path="/actors/:id">
           <Actors/>
         </Route>
-        <Route exact path="/">
+        <Route exact path={["/","/approved"]}>
           <Movies/>
         </Route>
         <Route exact path="/profile/:id">

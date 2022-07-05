@@ -14,7 +14,7 @@ export default makeStyles((theme) =>({
         }, 
     },
     appbar: {
-        backgroundImage: "linear-gradient(blue,lightblue)",
+        backgroundImage: "light",
         color: "white",
     },
     menuButton:{
